@@ -1,16 +1,13 @@
-import { ModeToggle } from "@/features/mode-toogle/mode-togle";
-
-export default function Layout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+import { SidebarProvider, SidebarTrigger } from "@/shared/ui/sidebar";
+import { AppSidebar } from "@/widgets/app-sidebar";
+export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <>
-    <h1>Layout</h1>
-      <ModeToggle/>
-    {children}
-    </>
-  
-  );
+    <SidebarProvider>
+      <AppSidebar />
+      <main>
+        <SidebarTrigger />
+        {children}
+      </main>
+    </SidebarProvider>
+  )
 }
