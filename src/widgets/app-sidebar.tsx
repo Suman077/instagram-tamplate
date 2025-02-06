@@ -1,5 +1,5 @@
 import { Calendar, Home,  Search, Settings,Heart,CircleUser,SquarePlus,Compass,MessageCircle,Film  } from "lucide-react"
-
+import Image from "next/image";
 import {
   Sidebar,
   SidebarContent,
@@ -10,6 +10,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/shared/ui/sidebar"
+import { profile } from "console";
 
 
 const items = [
@@ -51,32 +52,49 @@ const items = [
   {
     title: "Profile",
     url: "#",
-    icon: CircleUser ,
+
   },
 ]
 
 export function AppSidebar() {
   return (
-    <Sidebar>
+    <Sidebar className="w-64 p-4">
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Application</SidebarGroupLabel>
           <SidebarGroupContent>
-            <SidebarMenu>
+            <SidebarMenu className="space-y-2">
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
+                  <SidebarMenuButton
+                    className="flex items-center gap-4 px-4 py-5 rounded-[8px] transition"
+                    asChild>
                     <a href={item.url}>
-                      <item.icon />
-                      <span>{item.title}</span>
+                    <Image
+                        className="rounded-full"
+                        width={25}
+                        height={25}
+                        src={Profile}
+                        alt="Profile"
+                      />
+                      <span className="text-lg font-medium">{item.title}</span>
                     </a>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
+               <SidebarMenuItem >
+                  <SidebarMenuButton
+                    className="flex items-center gap-4 px-4 py-5 rounded-[8px] transition"
+                    asChild>
+                    <a href={profile.url}>
+                      <item.icon />
+                      <span className="text-lg font-medium">{profile.title}</span>
+                    </a>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
     </Sidebar>
-  )
+  );
 }
