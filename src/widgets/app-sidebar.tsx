@@ -1,22 +1,22 @@
-import { Calendar, Home,  Search, Settings,Heart,CircleUser,SquarePlus,Compass,MessageCircle,Film  } from "lucide-react"
+import {Home,  Search,Heart,SquarePlus,Compass,MessageCircle,Film  } from "lucide-react"
 import Image from "next/image";
 import {
   Sidebar,
   SidebarContent,
   SidebarGroup,
   SidebarGroupContent,
-  SidebarGroupLabel,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/shared/ui/sidebar"
-import { profile } from "console";
+import defaultProfile from "@/app/assets/icon/default-profile.jpg"
+import Link from "next/link";
 
 
 const items = [
   {
     title: "Home",
-    url: "#",
+    url: "/",
     icon: Home,
   },
   {
@@ -26,17 +26,17 @@ const items = [
   },
   {
     title: "Explore",
-    url: "#",
+    url: "/explore",
     icon: Compass ,
   },
   {
     title: "Reels",
-    url: "#",
+    url: "/reels",
     icon: Film ,
   },
   {
     title: "Messages",
-    url: "#",
+    url: "/chats",
     icon: MessageCircle,
   },
   {
@@ -48,12 +48,7 @@ const items = [
     title: "Create",
     url: "#",
     icon:SquarePlus,
-  },
-  {
-    title: "Profile",
-    url: "#",
-
-  },
+  }
 ]
 
 export function AppSidebar() {
@@ -68,16 +63,11 @@ export function AppSidebar() {
                   <SidebarMenuButton
                     className="flex items-center gap-4 px-4 py-5 rounded-[8px] transition"
                     asChild>
-                    <a href={item.url}>
-                    <Image
-                        className="rounded-full"
-                        width={25}
-                        height={25}
-                        src={Profile}
-                        alt="Profile"
-                      />
+                    <Link href={item.url}>
+                    <item.icon />
+                    
                       <span className="text-lg font-medium">{item.title}</span>
-                    </a>
+                    </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
@@ -85,10 +75,16 @@ export function AppSidebar() {
                   <SidebarMenuButton
                     className="flex items-center gap-4 px-4 py-5 rounded-[8px] transition"
                     asChild>
-                    <a href={profile.url}>
-                      <item.icon />
-                      <span className="text-lg font-medium">{profile.title}</span>
-                    </a>
+                    <Link href={"profile"}>
+                    <Image
+                        className="rounded-full"
+                        width={25}
+                        height={25}
+                        src={defaultProfile}
+                        alt="Profile"
+                      />
+                      <span className="text-lg font-medium">Profile</span>
+                    </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
             </SidebarMenu>
