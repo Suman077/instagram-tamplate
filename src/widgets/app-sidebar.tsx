@@ -1,5 +1,5 @@
-import {Home,  Search,Heart,SquarePlus,Compass,MessageCircle,Film  } from "lucide-react"
 import Image from "next/image";
+import {CreateIcon, ExploreIcon, HomeIcon,  InstagramLogoIcon,  MessageIcon,  NotificationIcon,  ReelsIcon,  SearchIconActive} from "@/shared/ui/svg"
 import {
   Sidebar,
   SidebarContent,
@@ -9,47 +9,53 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/shared/ui/sidebar"
-import defaultProfile from "@/app/assets/icon/default-profile.jpg"
+import defaultProfile from "@/app/assets/icon/default-profile.jpg";
 import Link from "next/link";
 
 
 const items = [
   {
+   url: "/",
+    icon:< InstagramLogoIcon />,
+  },
+  {
     title: "Home",
     url: "/",
-    icon: Home,
+    icon:<HomeIcon />,
   },
   {
     title: "Search",
     url: "#",
-    icon: Search,
+    icon:  <SearchIconActive/>,
   },
   {
     title: "Explore",
     url: "/explore",
-    icon: Compass ,
+    icon: <ExploreIcon/>,
   },
   {
     title: "Reels",
     url: "/reels",
-    icon: Film ,
+    icon: <ReelsIcon/> ,
   },
   {
     title: "Messages",
     url: "/chats",
-    icon: MessageCircle,
+    icon: <MessageIcon />,
   },
   {
     title: "Notification",
     url: "#",
-    icon: Heart,
+    icon:<NotificationIcon/>,
   },
   {
     title: "Create",
     url: "#",
-    icon:SquarePlus,
-  }
-]
+    icon:<CreateIcon/>,
+  }, 
+
+
+  ]
 
 export function AppSidebar() {
   return (
@@ -61,16 +67,15 @@ export function AppSidebar() {
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton
-                    className="flex items-center gap-4 px-4 py-5 rounded-[8px] transition"
-                    asChild>
+                    className="flex items-center gap-4 px-4 py-5 rounded-[8px] transition"asChild>
                     <Link href={item.url}>
-                    <item.icon />
-                    
-                      <span className="text-lg font-medium">{item.title}</span>
+                     {item.icon}   
+                    <span className="text-lg font-medium">{item.title}</span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
+              
                <SidebarMenuItem >
                   <SidebarMenuButton
                     className="flex items-center gap-4 px-4 py-5 rounded-[8px] transition"
@@ -81,8 +86,7 @@ export function AppSidebar() {
                         width={25}
                         height={25}
                         src={defaultProfile}
-                        alt="Profile"
-                      />
+                        alt="Profile" />
                       <span className="text-lg font-medium">Profile</span>
                     </Link>
                   </SidebarMenuButton>
