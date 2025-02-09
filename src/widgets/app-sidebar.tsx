@@ -1,5 +1,6 @@
-import Image from "next/image";
-import {CreateIcon, ExploreIcon, HomeIcon,  InstagramLogoIcon,  MessageIcon,  NotificationIcon,  ReelsIcon,  SearchIconActive} from "@/shared/ui/svg"
+"use client"
+import Image from "next/image"; 
+import {CreateIcon, ExploreActiveIcon, ExploreIcon, HomeIcon,  HomeIconActive,  InstagramLogoIcon,  MessageActiveIcon,  MessageIcon,  NotificationActiveIcon,  NotificationIcon,  ReelsActiveIcon,  ReelsIcon,  SearchIconActive} from "@/shared/ui/svg"
 import {
   Sidebar,
   SidebarContent,
@@ -11,53 +12,56 @@ import {
 } from "@/shared/ui/sidebar"
 import defaultProfile from "@/app/assets/icon/default-profile.jpg";
 import Link from "next/link";
-
-
+import { usePathname } from "next/navigation";     
 const items = [
   {
    url: "/",
-    icon:< InstagramLogoIcon />,
+    icon:< InstagramLogoIcon  />,
   },
   {
     title: "Home",
     url: "/",
     icon:<HomeIcon />,
+    activeIcon: <HomeIconActive />
   },
   {
     title: "Search",
     url: "#",
-    icon:  <SearchIconActive/>,
+    icon:  <SearchIconActive />,
   },
   {
     title: "Explore",
     url: "/explore",
-    icon: <ExploreIcon/>,
+    icon: <ExploreIcon />,
+    activeIcon: <ExploreActiveIcon />
   },
   {
     title: "Reels",
     url: "/reels",
     icon: <ReelsIcon/> ,
+    activeIcon: <ReelsActiveIcon />
   },
   {
     title: "Messages",
     url: "/chats",
-    icon: <MessageIcon />,
+    icon: <MessageIcon  />,
+    activeIcon: < MessageActiveIcon/>
   },
   {
     title: "Notification",
     url: "#",
     icon:<NotificationIcon/>,
+    activeIcon: < NotificationActiveIcon/>
   },
   {
     title: "Create",
     url: "#",
     icon:<CreateIcon/>,
   }, 
-
-
   ]
 
 export function AppSidebar() {
+  const pathname = usePathname();
   return (
     <Sidebar className="w-64 p-4">
       <SidebarContent>
@@ -69,13 +73,13 @@ export function AppSidebar() {
                   <SidebarMenuButton
                     className="flex items-center gap-4 px-4 py-5 rounded-[8px] transition"asChild>
                     <Link href={item.url}>
-                     {item.icon}   
+                     {pathname == item.url ? item.activeIcon : item.icon} 
                     <span className="text-lg font-medium">{item.title}</span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
-              
+    
                <SidebarMenuItem >
                   <SidebarMenuButton
                     className="flex items-center gap-4 px-4 py-5 rounded-[8px] transition"

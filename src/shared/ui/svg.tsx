@@ -39,10 +39,10 @@ export const HomeIcon = () => (
 	<svg
 	  aria-label="Main"
 	  fill="currentColor"
-	  height="24"
+	  height="50"
 	  role="img"
 	  viewBox="0 0 24 24"
-	  width="24"
+	  width="50"
 	>
 	  <title>Главная</title>
 	  <path
