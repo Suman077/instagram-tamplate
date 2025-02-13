@@ -21,13 +21,12 @@ async function login() {
       const {data} = await axios.post("https://instagram-api.softclub.tj/Account/register", {userName : userName, password: password,fullName:fullName,email:email,confirmPassword:confirmPassword})
       console.log(data)
       if(data.statusCode == "200" ){
-        router.push("/")
+        router.push("/login")
       }
      localStorage.setItem("access_token" , `${data?.data}`)
     }catch(error){  
       console.log(error)
     }
-    
   }
   return (
     <div>
@@ -54,7 +53,7 @@ async function login() {
           <Input value={confirmPassword} onChange={(e) => setconfirmPassword(e.target.value)} id="password" type="password" required  placeholder=" Confirm password"/>
         </div>
         <Button onClick={() => login()} type="submit" className="w-full bg-[#0077CC] hover:bg-[#0077CC] text-white">
-      Log in
+         Log in
        </Button>
         
       
@@ -68,4 +67,4 @@ async function login() {
       </div>
   )
 }
-export default RegistrationForm;
+export default RegistrationForm;  

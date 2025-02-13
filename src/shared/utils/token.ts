@@ -1,6 +1,5 @@
 "use client"
 import { jwtDecode } from 'jwt-decode'
-
 export function saveToken(token:string) {
   localStorage.setItem('access_token', token)
 }
